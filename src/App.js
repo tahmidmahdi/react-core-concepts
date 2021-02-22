@@ -2,7 +2,18 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  var name = 'REACT APP'
+  var tech = {
+    name: 'react',
+    type: 'app'
+  }
+  var tech2 = {
+    name: 'vueJS',
+    type :'app'
+  }
+  var style = {
+    color: 'red',
+    backgroundColor : 'yellow'
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -19,7 +30,8 @@ function App() {
           Learn React
         </a>
         <p>My first React Paragraph</p>
-        <h1>My Heading: {name}</h1>
+        <h1 style = {style}>My Heading: {tech.name +' '+ tech.type}</h1>
+        <h3>My Small Heading: {tech2.name + ' '+ tech2.type}</h3>
       </header>
     </div>
   );
