@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -56,6 +56,7 @@ function App() {
           Learn React
         </a> */}
         <Counter></Counter>
+        <Users></Users>
         <p>My first React Paragraph</p>
         <ul>
           {
@@ -100,18 +101,36 @@ function App() {
     </div>
   );
 }
+
+function Users() {
+  const [users, setUsers] = useState([])
+  useEffect(()=> {
+    fetch(`https://jsonplaceholder.typicode.com/users`)
+    .then(res => res.json())
+    .then(data => setUsers(data))
+  },[])
+  return(
+    <div>
+      <h3>Dynamic User {users.length}</h3>
+      {
+        users.map(user => <li>{user.name}</li>)
+      }
+    </div>
+  )
+}
+
+
+
 function Counter() {
 
   // state name, function to set value
   const [count, setCount] = useState(0);
-  const handleIncrease=  () => {
-    const newCount = count + 1;
-    setCount(newCount);
-  }
+
   return(
     <div>
       <h1>Count: {count}</h1>
-      <button onClick = {handleIncrease}>Increase</button>
+      <button onClick = {() => setCount(count-1)} >Decrease</button>
+      <button onClick = {() => setCount(count+1)}>Increase</button>
     </div>
   )
 }
