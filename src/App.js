@@ -14,7 +14,11 @@ function App() {
     color: 'red',
     backgroundColor : 'yellow'
   }
+
+  const name = ['Tahmid', 'Alif', 'Mahdi'];
+  const hobby = ['coding']
   return (
+    
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -37,25 +41,37 @@ function App() {
 
 
         {/* This is a component which is similar in look also data */}
-        <Person></Person>
-        <Person></Person>  
-        <Person></Person>
+        
+        <Person name='Tahmid Alif - Al - Mahdi' hobby = 'coding'></Person>
+        <Person name='Tahmid' hobby='coding and coding'></Person>  
+        <Person name='Mahdi' hobby='coding and sleeping'></Person>
+        <Coder name={name[0]} ></Coder>
       </header>
     </div>
   );
 }
 
-function Person() {
+function Person(props) {
   const personStyle ={
     border: '2px solid red',
     margin:'10px'
   };
+  console.log(props);
   return (
-  <div style={{border:'2px solid yellow',margin:'10px'}}>
-    <h1>Name: Tahmid Alif - Al - Mahdi</h1>
-    <h3>Hero Of the Year</h3>
+  <div style={personStyle}>
+    <h1>Name: {props.name}</h1>
+    <h3>Hobby: {props.hobby}</h3>
   </div>
   );
+}
+
+function Coder(props) {
+  return (
+    <div>
+      <h3>Coder: {props.name}</h3>
+      <p>Hobby: </p>
+    </div>
+  )
 }
 
 export default App;
