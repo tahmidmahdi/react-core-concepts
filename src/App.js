@@ -17,6 +17,20 @@ function App() {
 
   const name = ['Tahmid', 'Alif', 'Mahdi'];
   const hobby = ['coding']
+  const products = [
+    {name:'photoshop', price: '$90.99'},
+    {name: "Illustrator", price: '$69.99'},
+    {name: 'PDF READER', price: "$6.99"},
+    {name: 'Premier Pro', price: "$246.99"}
+  ]
+
+  const nayoks = ['Anwar', 'Jafor', 'Salman', 'Bappy', 'Shuvo', 'sakib'];
+  const nayokNames = nayoks.map(nayok => nayok);
+  console.log(nayokNames);
+
+  const productNames = products.map(product => product.name);
+  console.log(productNames);
+
   return (
     
     <div className="App">
@@ -34,9 +48,31 @@ function App() {
           Learn React
         </a> */}
         <p>My first React Paragraph</p>
+        <ul>
+          {
+            nayoks.map(nayok => <li>{nayok}</li>)
+          }
+          {
+            products.map(product => <li>{product.name}</li>)
+          }
+          {/* <li>{nayoks[0]}</li>
+          <li>{nayoks[1]}</li>
+          <li>{nayoks[2]}</li>
+          <li>{nayoks[3]}</li> */}
+        </ul>
         <h1 style = {style}>My Heading: {tech.name +' '+ tech.type}</h1>
         <h3 style={{backgroundColor: 'cyan', color:'yellow'}}>My Small Heading: {tech2.name + ' '+ tech2.type}</h3>
         <p style={{color: 'lightSalmon'}}>I am a REACT GUY</p>
+
+
+
+        {
+          products.map(product => <Product product={product}></Product>)
+        }
+        <Product product = {products[0]}></Product>
+        {/* {console.log(products[0].name)}; */}
+        
+        
 
 
 
@@ -46,6 +82,7 @@ function App() {
         <Person name='Tahmid' hobby='coding and coding'></Person>  
         <Person name='Mahdi' hobby='coding and sleeping'></Person>
         <Coder name={name[0]} ></Coder>
+
       </header>
     </div>
   );
@@ -56,7 +93,7 @@ function Person(props) {
     border: '2px solid red',
     margin:'10px'
   };
-  console.log(props);
+ 
   return (
   <div style={personStyle}>
     <h1>Name: {props.name}</h1>
@@ -71,7 +108,32 @@ function Coder(props) {
       <h3>Coder: {props.name}</h3>
       <p>Hobby: </p>
     </div>
-  )
+  );
+}
+
+function Product(props) {
+  console.log(props);
+  const productStyle = {
+    border: '1px solid gray',
+    borderRadius:'5px',
+    backgroundColor:'lightgray',
+    // margin: '20px',
+    // padding: '20px',
+    height: '300px',
+    width: '300px',
+    float : 'left'
+    
+  };
+  const {name,price} = props.product;
+  console.log(props)
+ 
+  return (
+    <div style = {productStyle}>
+      <h2>{name}</h2>
+      <h5>{price}</h5>
+      <button>Buy Now</button>
+    </div>
+  );
 }
 
 export default App;
