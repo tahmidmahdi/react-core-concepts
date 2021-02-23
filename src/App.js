@@ -23,7 +23,14 @@ function App() {
     {name: 'PDF READER', price: "$6.99"},
     {name: 'Premier Pro', price: "$246.99"}
   ]
-
+  const friends = [
+    {name: 'Fahim', age: '25'},
+    {name: 'Rahat', age: '25'},
+    {name: 'Rakib', age: '26'},
+    {name: 'Susmoy', age: '24'},
+    {name: 'Limon', age: '24'},
+    {name: 'Mehedi', age: '26'}
+  ]
   const nayoks = ['Anwar', 'Jafor', 'Salman', 'Bappy', 'Shuvo', 'sakib'];
   const nayokNames = nayoks.map(nayok => nayok);
   console.log(nayokNames);
@@ -67,9 +74,9 @@ function App() {
 
 
         {
-          products.map(product => <Product product={product}></Product>)
+          products.map(pd => <Product product={pd}></Product>)
         }
-        <Product product = {products[0]}></Product>
+        {/* <Product product = {products[0]}></Product> */}
         {/* {console.log(products[0].name)}; */}
         
         
@@ -82,6 +89,10 @@ function App() {
         <Person name='Tahmid' hobby='coding and coding'></Person>  
         <Person name='Mahdi' hobby='coding and sleeping'></Person>
         <Coder name={name[0]} ></Coder>
+
+        {
+          friends.map(frnd => <FriendsUnit each={frnd}></FriendsUnit>)
+        }
 
       </header>
     </div>
@@ -132,6 +143,16 @@ function Product(props) {
       <h2>{name}</h2>
       <h5>{price}</h5>
       <button>Buy Now</button>
+    </div>
+  );
+}
+
+function FriendsUnit(props) {
+  const {name, age} = props.each;
+  return(
+    <div style = {{border:'2px solid grey', padding:'10px'}}>
+      <h5>Name:  {name}</h5>
+      <h6>Age: {age}</h6>
     </div>
   );
 }
