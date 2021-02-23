@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -54,6 +55,7 @@ function App() {
         >
           Learn React
         </a> */}
+        <Counter></Counter>
         <p>My first React Paragraph</p>
         <ul>
           {
@@ -97,6 +99,21 @@ function App() {
       </header>
     </div>
   );
+}
+function Counter() {
+
+  // state name, function to set value
+  const [count, setCount] = useState(0);
+  const handleIncrease=  () => {
+    const newCount = count + 1;
+    setCount(newCount);
+  }
+  return(
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick = {handleIncrease}>Increase</button>
+    </div>
+  )
 }
 
 function Person(props) {
